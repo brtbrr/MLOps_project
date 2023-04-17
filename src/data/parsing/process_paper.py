@@ -1,5 +1,6 @@
 import os
 import ssl
+import typing as t
 
 import arxiv
 from PyPDF2 import PdfReader
@@ -12,6 +13,11 @@ ssl._create_default_https_context = ssl._create_unverified_context
 
 
 def extract_text(pdf_path) -> str:
+    """
+
+    :param pdf_path: path to .pdf file
+    :return: extracted plain text without preprocessing
+    """
     reader = PdfReader(pdf_path)
     pages = []
 
@@ -22,7 +28,7 @@ def extract_text(pdf_path) -> str:
     return "\n".join(pages)
 
 
-def process_result(result: arxiv.arxiv.Result) -> None:
+def process_result(result: arxiv.arxiv.Result) -> t.NoReturn:
     clean_title = slugify(result.title)
     pdf_path = os.path.join(PDF_DIR, clean_title + ".pdf")
     txt_path = os.path.join(EXTRACTED_TEXT_DIR, clean_title + ".txt")

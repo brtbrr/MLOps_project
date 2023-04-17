@@ -26,5 +26,9 @@ def slugify(value, allow_unicode=False):
 
 
 def clean_paper_text(raw_text: str) -> str:
+    """
+    :param raw_text: plain text, extracted from pdf
+    :return: preprocessed plain text
+    """
     text = ftfy.fix_text(raw_text)
     return re.sub("\s+", " ", text)
