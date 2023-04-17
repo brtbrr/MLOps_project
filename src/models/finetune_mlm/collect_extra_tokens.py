@@ -1,8 +1,9 @@
-import typing as t
-import razdel
-from collections import Counter
-from transformers import BertTokenizer
 import re
+import typing as t
+from collections import Counter
+
+import razdel
+from transformers import BertTokenizer
 
 
 def is_like_english_word(char_seq):
@@ -11,7 +12,11 @@ def is_like_english_word(char_seq):
 
 def get_english_tokens(text):
     # toDo check if bert is cased
-    return [tok.text.lower() for tok in razdel.tokenize(text) if is_like_english_word(tok.text)]
+    return [
+        tok.text.lower()
+        for tok in razdel.tokenize(text)
+        if is_like_english_word(tok.text)
+    ]
 
 
 def get_common_unknown_words(

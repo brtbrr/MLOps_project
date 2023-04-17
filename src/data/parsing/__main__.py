@@ -1,5 +1,6 @@
-import arxiv
 from argparse import ArgumentParser
+
+import arxiv
 
 from .process_paper import process_result
 

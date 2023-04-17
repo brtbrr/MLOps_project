@@ -1,10 +1,12 @@
+import os
+import ssl
+
 import arxiv
 from PyPDF2 import PdfReader
-import ssl
-import os
 
-from constants import PDF_DIR, EXTRACTED_TEXT_DIR
-from .clean_text import slugify, clean_paper_text
+from constants import EXTRACTED_TEXT_DIR, PDF_DIR
+
+from .clean_text import clean_paper_text, slugify
 
 ssl._create_default_https_context = ssl._create_unverified_context
 
